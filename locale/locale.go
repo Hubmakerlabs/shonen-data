@@ -29,6 +29,8 @@ func (t TimeZones) GetSortedNames() (s []st) {
 	return
 }
 
+// Nation is the structure containing the needed information for a web app
+// handling information about user locations in Gilder.
 type Nation struct {
 	Id             no   `json:"id"`
 	Name           st   `json:"name"`
