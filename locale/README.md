@@ -6,6 +6,8 @@ https://github.com/dr5hn/countries-states-cities-database/raw/refs/heads/master/
 
 https://www.timeapi.io/api
 
-combined with a list compiled from the official/de-facto languages for all of the nations to derive a compact, filtered list of locale data suited to the purposes of a web application.
+combined with a list compiled from the official/de-facto languages for all of the nations to derive a compact, 
+filtered list of locale data suited to the purposes of a web application.
 
-It does not include cities and states data, only the timezones and languages associated with a country, as is needed for web applications.
+It does not include cities and states data, only the timezones and languages associated with a country, as is needed 
+for web applications.
