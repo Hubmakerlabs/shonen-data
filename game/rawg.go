@@ -11,9 +11,6 @@ import (
 	"os"
 )
 
-//go:embed key
-var key st // Your personal API key (see https://rawg.io/apidocs)
-
 var mp = []st{
 	"2-players",
 	"4-player-local",
@@ -69,6 +66,7 @@ func GetMpGames(jsonFile st) (o st) {
 			}
 		}
 	}
+	key := os.Getenv("RAWG_KEY")
 	config := rawg.Config{
 		ApiKey:   key, // Your personal API key (see https://rawg.io/apidocs)
 		Language: "en",
