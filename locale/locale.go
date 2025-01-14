@@ -2,7 +2,6 @@ package locale
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -49,16 +48,22 @@ type Nation struct {
 	TimeZones      `json:"timezones"`
 }
 
+type Nations []Nation
+
+func (n Nations) Len() int           { return len(n) }
+func (n Nations) Less(i, j int) bool { return n[i].Name < n[j].Name }
+func (n Nations) Swap(i, j int)      { n[i], n[j] = n[j], n[i] }
+
 const (
 	countries          = "https://github.com/dr5hn/countries-states-cities-database/raw/refs/heads/master/json/countries+states+cities.json"
 	availableTimeZones = "https://www.timeapi.io/api/timezone/availabletimezones"
 	getZoneInfo        = "https://www.timeapi.io/api/timezone/zone?timeZone="
-	JsonFile           = "countriestimezoneslanguages.json"
+	CountriesJsonFile  = "countriestimezoneslanguages.json"
 )
 
-func GetData(jsonFile st) (o st) {
+func GetNations(jsonFile st) (o st) {
 	if jsonFile == "" {
-		jsonFile = JsonFile
+		jsonFile = CountriesJsonFile
 	}
 	var err er
 	var fi os.FileInfo
@@ -68,7 +73,7 @@ func GetData(jsonFile st) (o st) {
 		if !modTime.After(update) {
 			// no need to update more than once a season
 			var b by
-			if b, err = os.ReadFile(JsonFile); !chk.E(err) {
+			if b, err = os.ReadFile(CountriesJsonFile); !chk.E(err) {
 				o = st(b)
 				return
 			}
@@ -167,5 +172,5 @@ func GetData(jsonFile st) (o st) {
 	}
 	// cache the current version so we can avoid making it again any time too soon
 	chk.E(os.WriteFile(jsonFile, b, 0660))
-	return fmt.Sprintf("%s\n", b)
+	return st(b)
 }
