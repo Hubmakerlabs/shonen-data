@@ -11,10 +11,14 @@ import (
 //go:embed data/countriestimezoneslanguages.json
 var nations by
 
+//go:embed data/timezones.json
+var timezones by
+
 //go:embed data/games.json
 var games by
 
 var Nations locale.Nations
+var TimeZones locale.TimeZoneList
 var Games game.GamesList
 
 func init() {
@@ -23,6 +27,10 @@ func init() {
 		panic(err)
 	}
 	sort.Sort(Nations)
+	if err = json.Unmarshal(timezones, &TimeZones); chk.E(err) {
+		panic(err)
+	}
+	sort.Sort(TimeZones)
 	if err = json.Unmarshal(games, &Games); chk.E(err) {
 		panic(err)
 	}

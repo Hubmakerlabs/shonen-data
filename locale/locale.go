@@ -20,6 +20,12 @@ type TimeZone struct {
 
 type TimeZones map[st]TimeZone
 
+type TimeZoneList []TimeZone
+
+func (t TimeZoneList) Len() int           { return len(t) }
+func (t TimeZoneList) Less(i, j int) bool { return t[i].Name < t[j].Name }
+func (t TimeZoneList) Swap(i, j int)      { t[i], t[j] = t[j], t[i] }
+
 func (t TimeZones) GetSortedNames() (s []st) {
 	for i := range t {
 		s = append(s, i)
@@ -59,12 +65,98 @@ const (
 	availableTimeZones = "https://www.timeapi.io/api/timezone/availabletimezones"
 	getZoneInfo        = "https://www.timeapi.io/api/timezone/zone?timeZone="
 	CountriesJsonFile  = "countriestimezoneslanguages.json"
+	TimezonesJsonFile  = "timezones.json"
 )
+
+func GetTimezones(jsonFile st) (o st, tzs TimeZones, err er) {
+	if jsonFile == "" {
+		jsonFile = TimezonesJsonFile
+	}
+	log.I.F("creating timezone json %s", jsonFile)
+	var fi os.FileInfo
+	if fi, err = os.Stat(jsonFile); err == nil {
+		modTime := fi.ModTime()
+		update := time.Now().Add(time.Hour * 24 * 90)
+		if !modTime.After(update) {
+			// no need to update more than once a season
+			var b by
+			if b, err = os.ReadFile(TimezonesJsonFile); !chk.E(err) {
+				o = st(b)
+				var tzl TimeZoneList
+				if err = json.Unmarshal(b, &tzl); chk.E(err) {
+					return
+				}
+				tzs = make(TimeZones)
+				for _, v := range tzl {
+					tzs[v.Name] = v
+				}
+				return
+			}
+		}
+	}
+	var res *http.Response
+	// first get the available timezones
+	if res, err = http.Get(availableTimeZones); chk.E(err) {
+		return
+	}
+	var b by
+	if b, err = io.ReadAll(res.Body); chk.E(err) {
+		return
+	}
+	tzs = make(TimeZones)
+	var zoneNames []st
+	if err = json.Unmarshal(b, &zoneNames); chk.E(err) {
+		return
+	}
+	log.I.F("got available timezones, total %d", len(zoneNames))
+	// next get the details for each named timezone
+	for _, v := range zoneNames {
+		if res, err = http.Get(getZoneInfo + v); chk.E(err) {
+			return
+		}
+		if b, err = io.ReadAll(res.Body); chk.E(err) {
+			return
+		}
+		var z timeZone
+		if err = json.Unmarshal(b, &z); chk.E(err) {
+			return
+		}
+		if z.TimeZone == "" {
+			continue
+		}
+		log.I.F("got timezone %s", z.TimeZone)
+		zi := TimeZone{
+			Name:   z.TimeZone,
+			Offset: z.StandardUtcOffset.Seconds,
+		}
+		if z.HasDayLightSaving {
+			zi.DstName = z.DstInterval.DstName
+			zi.DstOffset = z.DstInterval.DstOffsetToUtc.Seconds
+			zi.DstStart = z.DstInterval.DstStart.Unix()
+			zi.DstEnd = z.DstInterval.DstEnd.Unix()
+		}
+		tzs[z.TimeZone] = zi
+	}
+	var tzl TimeZoneList
+	for _, v := range tzs {
+		tzl = append(tzl, v)
+	}
+	sort.Sort(tzl)
+	b = b[:0]
+	if b, err = json.Marshal(&tzl); chk.E(err) {
+		return
+	}
+	// cache the current version so we can avoid making it again any time too soon
+	chk.E(os.WriteFile(jsonFile, b, 0660))
+	log.I.F("finished creating timezones json %s", jsonFile)
+	return
+}
 
 func GetNations(jsonFile st) (o st) {
 	if jsonFile == "" {
 		jsonFile = CountriesJsonFile
 	}
+	log.I.F("creating nations json %s", jsonFile)
 	var err er
 	var fi os.FileInfo
 	if fi, err = os.Stat(jsonFile); err == nil {
@@ -81,45 +173,7 @@ func GetNations(jsonFile st) (o st) {
 	}
 	var c Countries
 	var res *http.Response
-	// first get the available timezones
-	if res, err = http.Get(availableTimeZones); chk.E(err) {
-		return
-	}
 	var b by
-	if b, err = io.ReadAll(res.Body); chk.E(err) {
-		return
-	}
-	tzs := make(TimeZones)
-	var zoneNames []st
-	if err = json.Unmarshal(b, &zoneNames); chk.E(err) {
-		return
-	}
-	// next get the details for each named timezone
-	for _, v := range zoneNames {
-		if res, err = http.Get(getZoneInfo + v); chk.E(err) {
-			return
-		}
-		if b, err = io.ReadAll(res.Body); chk.E(err) {
-			return
-		}
-		var z timeZone
-		if err = json.Unmarshal(b, &z); chk.E(err) {
-			return
-		}
-		if z.TimeZone == "" {
-			continue
-		}
-		zi := TimeZone{
-			Offset: z.StandardUtcOffset.Seconds,
-		}
-		if z.HasDayLightSaving {
-			zi.DstName = z.DstInterval.DstName
-			zi.DstOffset = z.DstInterval.DstOffsetToUtc.Seconds
-			zi.DstStart = z.DstInterval.DstStart.Unix()
-			zi.DstEnd = z.DstInterval.DstEnd.Unix()
-		}
-		tzs[z.TimeZone] = zi
-	}
 	// next, get the country data
 	if res, err = http.Get(countries); chk.E(err) {
 		return
@@ -133,6 +187,8 @@ func GetNations(jsonFile st) (o st) {
 	// condense the data down to the essentials we require, and link the time zones
 	// to the ones we gathered before (as many overlap over the same longitude).
 	var cc []Nation
+	var tzs TimeZones
+	_, tzs, err = GetTimezones(TimezonesJsonFile)
 	for _, country := range c {
 		ccc := Nation{
 			Id:             country.Id,
@@ -165,6 +221,7 @@ func GetNations(jsonFile st) (o st) {
 				ccc.TimeZones[tz.ZoneName] = x
 			}
 		}
+		log.I.F("got nation %s", ccc.Name)
 		cc = append(cc, ccc)
 	}
 	if b, err = json.Marshal(&cc); chk.E(err) {
@@ -172,5 +229,6 @@ func GetNations(jsonFile st) (o st) {
 	}
 	// cache the current version so we can avoid making it again any time too soon
 	chk.E(os.WriteFile(jsonFile, b, 0660))
+	log.I.F("finished creating nations json %s", jsonFile)
 	return st(b)
 }

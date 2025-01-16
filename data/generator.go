@@ -12,11 +12,15 @@ const (
 	localeJsonGz    = localeJson + ".gz"
 	gamesJsonFile   = "games.json"
 	gamesJsonFileGz = gamesJsonFile + ".gz"
+	timezonesJson   = "timezones.json"
 )
 
 func main() {
+	var err er
+	_, _, err = locale.GetTimezones(timezonesJson)
 	nations := locale.GetNations(localeJson)
-	fh, err := os.OpenFile(localeJsonGz, os.O_CREATE|os.O_TRUNC|os.O_RDWR, 0666)
+	var fh *os.File
+	fh, err = os.OpenFile(localeJsonGz, os.O_CREATE|os.O_TRUNC|os.O_RDWR, 0666)
 	if err != nil {
 		panic(err)
 	}

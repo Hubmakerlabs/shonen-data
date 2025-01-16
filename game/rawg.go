@@ -52,6 +52,7 @@ func GetMpGames(jsonFile st) (o st) {
 	if jsonFile == "" {
 		jsonFile = GamesJsonFile
 	}
+	log.I.F("creating mp games json %s", jsonFile)
 	var err er
 	var fi os.FileInfo
 	if fi, err = os.Stat(jsonFile); err == nil {
@@ -158,5 +159,6 @@ done:
 	o += "]"
 	// cache the current version so we can avoid making it again any time too soon
 	chk.E(os.WriteFile(jsonFile, by(o), 0660))
+	log.I.F("finished creating mp games json %s", jsonFile)
 	return
 }
