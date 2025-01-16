@@ -17,3 +17,12 @@ type GamesList []FullGameDetail
 func (l GamesList) Len() int           { return len(l) }
 func (l GamesList) Less(i, j int) bool { return l[i].Name < l[j].Name }
 func (l GamesList) Swap(i, j int)      { l[i], l[j] = l[j], l[i] }
+
+func (l GamesList) Get(name st) (d *FullGameDetail) {
+	for _, v := range l {
+		if v.Name == name {
+			return &v
+		}
+	}
+	return
+}

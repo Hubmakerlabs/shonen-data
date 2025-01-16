@@ -25,12 +25,20 @@ type TimeZoneList []TimeZone
 func (t TimeZoneList) Len() int           { return len(t) }
 func (t TimeZoneList) Less(i, j int) bool { return t[i].Name < t[j].Name }
 func (t TimeZoneList) Swap(i, j int)      { t[i], t[j] = t[j], t[i] }
-
 func (t TimeZones) GetSortedNames() (s []st) {
 	for i := range t {
 		s = append(s, i)
 	}
 	sort.Strings(s)
+	return
+}
+
+func (t TimeZones) Get(name st) (d *TimeZone) {
+	for _, v := range t {
+		if v.Name == name {
+			return &v
+		}
+	}
 	return
 }
 
@@ -59,6 +67,14 @@ type Nations []Nation
 func (n Nations) Len() int           { return len(n) }
 func (n Nations) Less(i, j int) bool { return n[i].Name < n[j].Name }
 func (n Nations) Swap(i, j int)      { n[i], n[j] = n[j], n[i] }
+func (n Nations) Get(name st) (d *Nation) {
+	for _, v := range n {
+		if v.Name == name {
+			return &v
+		}
+	}
+	return
+}
 
 const (
 	countries          = "https://github.com/dr5hn/countries-states-cities-database/raw/refs/heads/master/json/countries+states+cities.json"
