@@ -33,7 +33,7 @@ func (t TimeZones) GetSortedNames() (s []st) {
 	return
 }
 
-func (t TimeZones) Get(name st) (d *TimeZone) {
+func (t TimeZoneList) Get(name st) (d *TimeZone) {
 	for _, v := range t {
 		if v.Name == name {
 			return &v
