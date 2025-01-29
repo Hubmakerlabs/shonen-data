@@ -42,6 +42,20 @@ func (t TimeZoneList) Get(name st) (d *TimeZone) {
 	return
 }
 
+func (t TimeZoneList) GetInForceOffset(name st) (off time.Duration, err er) {
+	tz := t.Get(name)
+	if tz == nil {
+		err = errorf.E("unknown timezone %s", name)
+		return
+	}
+	off = time.Duration(tz.Offset) * time.Second
+	now := time.Now().Unix()
+	if now > tz.DstStart && now < tz.DstEnd {
+		off = time.Duration(tz.DstOffset) * time.Second
+	}
+	return
+}
+
 // Nation is the structure containing the needed information for a web app
 // handling information about user locations in Gilder.
 type Nation struct {
