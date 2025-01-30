@@ -1,12 +1,12 @@
 package locale
 
 type Language struct {
-	Country   st
-	Iso2      st
-	Languages []st
+	Country   string
+	Iso2      string
+	Languages []string
 }
 
-func GetLanguageByIso2(iso2 st) (v *Language) {
+func GetLanguageByIso2(iso2 string) (v *Language) {
 	for _, v = range LanguagesByNation {
 		if v.Iso2 == iso2 {
 			return
@@ -19,7 +19,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Abkhazia",
 		Iso2:    "AB",
-		Languages: []st{
+		Languages: []string{
 			"Abkhaz",
 			"Russian",
 		},
@@ -27,7 +27,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Afghanistan",
 		Iso2:    "AF",
-		Languages: []st{
+		Languages: []string{
 			"Persian",
 			"Pashto",
 		},
@@ -35,14 +35,14 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Albania",
 		Iso2:    "AL",
-		Languages: []st{
+		Languages: []string{
 			"Albanian",
 		},
 	},
 	{
 		Country: "Algeria",
 		Iso2:    "DZ",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 			"Berber",
 		},
@@ -50,91 +50,91 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Andorra",
 		Iso2:    "AD",
-		Languages: []st{
+		Languages: []string{
 			"Catalan",
 		},
 	},
 	{
 		Country: "Angola",
 		Iso2:    "AO",
-		Languages: []st{
+		Languages: []string{
 			"Portuguese",
 		},
 	},
 	{
 		Country: "Antigua and Barbuda",
 		Iso2:    "AG",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Argentina",
 		Iso2:    "AR",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Armenia",
 		Iso2:    "AM",
-		Languages: []st{
+		Languages: []string{
 			"Armenian",
 		},
 	},
 	{
 		Country: "Australia",
 		Iso2:    "AU",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Austria",
 		Iso2:    "AT",
-		Languages: []st{
+		Languages: []string{
 			"German",
 		},
 	},
 	{
 		Country: "Azerbaijan",
 		Iso2:    "AZ",
-		Languages: []st{
+		Languages: []string{
 			"Azerbaijani",
 		},
 	},
 	{
 		Country: "Bahamas",
 		Iso2:    "BS",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Bahrain",
 		Iso2:    "BH",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Bangladesh",
 		Iso2:    "BD",
-		Languages: []st{
+		Languages: []string{
 			"Bengali",
 		},
 	},
 	{
 		Country: "Barbados",
 		Iso2:    "BB",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Belarus",
 		Iso2:    "BY",
-		Languages: []st{
+		Languages: []string{
 			"Belarusian",
 			"Russian",
 		},
@@ -142,7 +142,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Belgium",
 		Iso2:    "BE",
-		Languages: []st{
+		Languages: []string{
 			"Dutch",
 			"French",
 			"German",
@@ -151,35 +151,35 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Belize",
 		Iso2:    "BZ",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Benin",
 		Iso2:    "BJ",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Bhutan",
 		Iso2:    "BT",
-		Languages: []st{
+		Languages: []string{
 			"Dzongkha",
 		},
 	},
 	{
 		Country: "Bolivia",
 		Iso2:    "BO",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Bosnia and Herzegovina",
 		Iso2:    "BA",
-		Languages: []st{
+		Languages: []string{
 			"Bosnian",
 			"Croatian",
 			"Serbian",
@@ -188,28 +188,28 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Botswana",
 		Iso2:    "BW",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Brazil",
 		Iso2:    "BR",
-		Languages: []st{
+		Languages: []string{
 			"Portuguese",
 		},
 	},
 	{
 		Country: "Brunei",
 		Iso2:    "BN",
-		Languages: []st{
+		Languages: []string{
 			"Malay",
 		},
 	},
 	{
 		Country: "Burkina Faso",
 		Iso2:    "BF",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"French",
 		},
@@ -217,7 +217,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Burundi",
 		Iso2:    "BI",
-		Languages: []st{
+		Languages: []string{
 			"French",
 			"Kirundi",
 			"English",
@@ -226,14 +226,14 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Cambodia",
 		Iso2:    "KH",
-		Languages: []st{
+		Languages: []string{
 			"Khmer",
 		},
 	},
 	{
 		Country: "Cameroon",
 		Iso2:    "CM",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"French",
 		},
@@ -241,7 +241,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Canada",
 		Iso2:    "CA",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"French",
 		},
@@ -249,14 +249,14 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Cape Verde",
 		Iso2:    "CV",
-		Languages: []st{
+		Languages: []string{
 			"Portuguese",
 		},
 	},
 	{
 		Country: "Central African Republic",
 		Iso2:    "CF",
-		Languages: []st{
+		Languages: []string{
 			"French",
 			"Sango",
 		},
@@ -264,7 +264,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Chad",
 		Iso2:    "TD",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 			"French",
 		},
@@ -272,21 +272,21 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Chile",
 		Iso2:    "CL",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "China",
 		Iso2:    "CN",
-		Languages: []st{
+		Languages: []string{
 			"Chinese",
 		},
 	},
 	{
 		Country: "Christmas Island",
 		Iso2:    "CX",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"Mandarin Chinese",
 			"Malay",
@@ -295,7 +295,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Cocos Islands",
 		Iso2:    "CC",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"Cocos Malay",
 		},
@@ -303,14 +303,14 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Columbia",
 		Iso2:    "CO",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Comoros",
 		Iso2:    "KM",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 			"French",
 			"Comorian",
@@ -319,49 +319,49 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Democratic Republic of the Congo",
 		Iso2:    "CD",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Congo",
 		Iso2:    "CG",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Cook Islands",
 		Iso2:    "CK",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Costa Rica",
 		Iso2:    "CR",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Croatia",
 		Iso2:    "HR",
-		Languages: []st{
+		Languages: []string{
 			"Croatian",
 		},
 	},
 	{
 		Country: "Cuba",
 		Iso2:    "CU",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Cyprus",
 		Iso2:    "CY",
-		Languages: []st{
+		Languages: []string{
 			"Greek",
 			"Turkish",
 		},
@@ -369,7 +369,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Czech Republic",
 		Iso2:    "CZ",
-		Languages: []st{
+		Languages: []string{
 			"Czech",
 			"Slovak",
 		},
@@ -377,14 +377,14 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Denmark",
 		Iso2:    "DK",
-		Languages: []st{
+		Languages: []string{
 			"Danish",
 		},
 	},
 	{
 		Country: "Djibouti",
 		Iso2:    "DJ",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 			"French",
 		},
@@ -392,49 +392,49 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Dominica",
 		Iso2:    "DM",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Dominican Republic",
 		Iso2:    "DO",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Timor-Leste",
 		Iso2:    "TL",
-		Languages: []st{
+		Languages: []string{
 			"Portuguese",
 		},
 	},
 	{
 		Country: "Ecuador",
 		Iso2:    "EC",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Egypt",
 		Iso2:    "EG",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "El Salvador",
 		Iso2:    "SV",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Equatorial Guinea",
 		Iso2:    "GQ",
-		Languages: []st{
+		Languages: []string{
 			"French",
 			"Portuguese",
 			"Spanish",
@@ -443,21 +443,21 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Eritrea",
 		Iso2:    "ER",
-		Languages: []st{
+		Languages: []string{
 			"Tigrinya",
 		},
 	},
 	{
 		Country: "Estonia",
 		Iso2:    "EE",
-		Languages: []st{
+		Languages: []string{
 			"Estonian",
 		},
 	},
 	{
 		Country: "Eswatini",
 		Iso2:    "SZ",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"Swazi",
 		},
@@ -465,7 +465,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Ethiopia",
 		Iso2:    "ET",
-		Languages: []st{
+		Languages: []string{
 			"Afar",
 			"Amharic",
 			"Oromo",
@@ -476,7 +476,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Fiji",
 		Iso2:    "FJ",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"Fijian",
 			"Hindi",
@@ -485,112 +485,112 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Finland",
 		Iso2:    "FI",
-		Languages: []st{
+		Languages: []string{
 			"Finnish",
 		},
 	},
 	{
 		Country: "France",
 		Iso2:    "FR",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Gabon",
 		Iso2:    "GA",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Gambia",
 		Iso2:    "GM",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Georgia",
 		Iso2:    "GE",
-		Languages: []st{
+		Languages: []string{
 			"Georgian",
 		},
 	},
 	{
 		Country: "Germany",
 		Iso2:    "DE",
-		Languages: []st{
+		Languages: []string{
 			"German",
 		},
 	},
 	{
 		Country: "Ghana",
 		Iso2:    "GH",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Greece",
 		Iso2:    "GR",
-		Languages: []st{
+		Languages: []string{
 			"Greek",
 		},
 	},
 	{
 		Country: "Grenada",
 		Iso2:    "GD",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Guatemala",
 		Iso2:    "GT",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Guinea",
 		Iso2:    "GN",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Guinea-Bissau",
 		Iso2:    "GW",
-		Languages: []st{
+		Languages: []string{
 			"Portuguese",
 		},
 	},
 	{
 		Country: "Guyana",
 		Iso2:    "GY",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Haiti",
 		Iso2:    "HT",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Honduras",
 		Iso2:    "HN",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Hong Kong",
 		Iso2:    "HK",
-		Languages: []st{
+		Languages: []string{
 			"Cantonese",
 			"English",
 			"Mandarin",
@@ -599,21 +599,21 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Hungary",
 		Iso2:    "HU",
-		Languages: []st{
+		Languages: []string{
 			"Hungarian",
 		},
 	},
 	{
 		Country: "Iceland",
 		Iso2:    "IS",
-		Languages: []st{
+		Languages: []string{
 			"Icelandic",
 		},
 	},
 	{
 		Country: "India",
 		Iso2:    "IN",
-		Languages: []st{
+		Languages: []string{
 			"Assamese",
 			"Bengali",
 			"Bodo",
@@ -641,28 +641,28 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Indonesia",
 		Iso2:    "ID",
-		Languages: []st{
+		Languages: []string{
 			"Indonesian",
 		},
 	},
 	{
 		Country: "Iran",
 		Iso2:    "IR",
-		Languages: []st{
+		Languages: []string{
 			"Persian",
 		},
 	},
 	{
 		Country: "Iraq",
 		Iso2:    "IQ",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Ireland",
 		Iso2:    "IE",
-		Languages: []st{
+		Languages: []string{
 			"Irish",
 			"English",
 		},
@@ -670,49 +670,49 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Israel",
 		Iso2:    "IL",
-		Languages: []st{
+		Languages: []string{
 			"Hebrew",
 		},
 	},
 	{
 		Country: "Italy",
 		Iso2:    "IT",
-		Languages: []st{
+		Languages: []string{
 			"Italian",
 		},
 	},
 	{
 		Country: "Ivory Coast",
 		Iso2:    "CI",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Jamaica",
 		Iso2:    "JM",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Japan",
 		Iso2:    "JP",
-		Languages: []st{
+		Languages: []string{
 			"Japanese",
 		},
 	},
 	{
 		Country: "Jordan",
 		Iso2:    "JO",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Kazakhstan",
 		Iso2:    "KZ",
-		Languages: []st{
+		Languages: []string{
 			"Kazakh",
 			"Russian",
 		},
@@ -720,7 +720,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Kenya",
 		Iso2:    "KE",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"Swahili",
 		},
@@ -728,21 +728,21 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "North Korea",
 		Iso2:    "KP",
-		Languages: []st{
+		Languages: []string{
 			"Korean",
 		},
 	},
 	{
 		Country: "South Korea",
 		Iso2:    "KR",
-		Languages: []st{
+		Languages: []string{
 			"KKorean",
 		},
 	},
 	{
 		Country: "Kosovo", // je Srbija
 		Iso2:    "XK",
-		Languages: []st{
+		Languages: []string{
 			"Albanian",
 			"Serbian",
 		},
@@ -750,14 +750,14 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Kuwait",
 		Iso2:    "KW",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Kyrgyzstan",
 		Iso2:    "KG",
-		Languages: []st{
+		Languages: []string{
 			"Kyrgyz",
 			"Russian",
 		},
@@ -765,28 +765,28 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Laos",
 		Iso2:    "LA",
-		Languages: []st{
+		Languages: []string{
 			"Lao",
 		},
 	},
 	{
 		Country: "Latvia",
 		Iso2:    "LV",
-		Languages: []st{
+		Languages: []string{
 			"Latvian",
 		},
 	},
 	{
 		Country: "Lebanon",
 		Iso2:    "LB",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Lesotho",
 		Iso2:    "LS",
-		Languages: []st{
+		Languages: []string{
 			"Sotho",
 			"English",
 		},
@@ -794,35 +794,35 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Liberia",
 		Iso2:    "LR",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Libya",
 		Iso2:    "LY",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Liechtenstein",
 		Iso2:    "LI",
-		Languages: []st{
+		Languages: []string{
 			"German",
 		},
 	},
 	{
 		Country: "Lithuania",
 		Iso2:    "LT",
-		Languages: []st{
+		Languages: []string{
 			"Lithuanian",
 		},
 	},
 	{
 		Country: "Luxembourg",
 		Iso2:    "LU",
-		Languages: []st{
+		Languages: []string{
 			"French",
 			"German",
 		},
@@ -830,7 +830,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Macau",
 		Iso2:    "MO",
-		Languages: []st{
+		Languages: []string{
 			"Cantonese",
 			"Portuguese",
 		},
@@ -838,7 +838,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Madagascar",
 		Iso2:    "MG",
-		Languages: []st{
+		Languages: []string{
 			"French",
 			"Malagasy",
 		},
@@ -846,7 +846,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Malawi",
 		Iso2:    "MW",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"Chichewa",
 		},
@@ -854,28 +854,28 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Malaysia",
 		Iso2:    "My",
-		Languages: []st{
+		Languages: []string{
 			"Malay",
 		},
 	},
 	{
 		Country: "Maldives",
 		Iso2:    "MV",
-		Languages: []st{
+		Languages: []string{
 			"Dhivehi",
 		},
 	},
 	{
 		Country: "Mali",
 		Iso2:    "ML",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Malta",
 		Iso2:    "MT",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"Maltese",
 		},
@@ -883,70 +883,70 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Marshall Islands",
 		Iso2:    "MH",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Mauritania",
 		Iso2:    "MR",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Mauritius",
 		Iso2:    "MU",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Mexico",
 		Iso2:    "MX",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Micronesia",
 		Iso2:    "FM",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Moldova",
 		Iso2:    "MD",
-		Languages: []st{
+		Languages: []string{
 			"Romanian",
 		},
 	},
 	{
 		Country: "Monaco",
 		Iso2:    "MC",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Mongolia",
 		Iso2:    "MN",
-		Languages: []st{
+		Languages: []string{
 			"Mongolian",
 		},
 	},
 	{
 		Country: "Montenegro",
 		Iso2:    "ME",
-		Languages: []st{
+		Languages: []string{
 			"Montenegrin",
 		},
 	},
 	{
 		Country: "Morocco",
 		Iso2:    "MA",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 			"Berber",
 		},
@@ -954,91 +954,91 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Mozambique",
 		Iso2:    "MZ",
-		Languages: []st{
+		Languages: []string{
 			"Portuguese",
 		},
 	},
 	{
 		Country: "Myanmar",
 		Iso2:    "MM",
-		Languages: []st{
+		Languages: []string{
 			"Burmese",
 		},
 	},
 	{
 		Country: "Namibia",
 		Iso2:    "NA",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Nauru",
 		Iso2:    "NR",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Nepal",
 		Iso2:    "NP",
-		Languages: []st{
+		Languages: []string{
 			"Nepali",
 		},
 	},
 	{
 		Country: "Netherlands",
 		Iso2:    "NL",
-		Languages: []st{
+		Languages: []string{
 			"Dutch",
 		},
 	},
 	{
 		Country: "New Zealand",
 		Iso2:    "NZ",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Nicaragua",
 		Iso2:    "NI",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Niger",
 		Iso2:    "NE",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Nigeria",
 		Iso2:    "NG",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Niue",
 		Iso2:    "NU",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Norfolk Island",
 		Iso2:    "NF",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "North Macedonia",
 		Iso2:    "MK",
-		Languages: []st{
+		Languages: []string{
 			"Macedonian",
 			"Albanian",
 		},
@@ -1046,21 +1046,21 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Norway",
 		Iso2:    "NO",
-		Languages: []st{
+		Languages: []string{
 			"Norwegian",
 		},
 	},
 	{
 		Country: "Oman",
 		Iso2:    "OM",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Pakistan",
 		Iso2:    "PK",
-		Languages: []st{
+		Languages: []string{
 			"Urdu",
 			"English",
 		},
@@ -1068,49 +1068,49 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Palau",
 		Iso2:    "PW",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Palestine",
 		Iso2:    "PS",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Panama",
 		Iso2:    "PA",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Papua New Guinea",
 		Iso2:    "PG",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Paraguay",
 		Iso2:    "PY",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Peru",
 		Iso2:    "PE",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Philippines",
 		Iso2:    "PH",
-		Languages: []st{
+		Languages: []string{
 			"Filipino",
 			"English",
 		},
@@ -1118,42 +1118,42 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Poland",
 		Iso2:    "PL",
-		Languages: []st{
+		Languages: []string{
 			"Polish",
 		},
 	},
 	{
 		Country: "Portugal",
 		Iso2:    "PT",
-		Languages: []st{
+		Languages: []string{
 			"Portuguese",
 		},
 	},
 	{
 		Country: "Qatar",
 		Iso2:    "QA",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Romania",
 		Iso2:    "RO",
-		Languages: []st{
+		Languages: []string{
 			"Romanian",
 		},
 	},
 	{
 		Country: "Russia",
 		Iso2:    "RU",
-		Languages: []st{
+		Languages: []string{
 			"Russian",
 		},
 	},
 	{
 		Country: "Rwanda",
 		Iso2:    "RW",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"French",
 			"Swahili",
@@ -1162,7 +1162,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Western Sahara",
 		Iso2:    "EH",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 			"Spanish",
 		},
@@ -1170,70 +1170,70 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Saint Kitts and Nevis",
 		Iso2:    "KN",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Saint Lucia",
 		Iso2:    "LC",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Saint Vincent and the Grenadines",
 		Iso2:    "VC",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Samoa",
 		Iso2:    "WS",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "San Marino",
 		Iso2:    "SM",
-		Languages: []st{
+		Languages: []string{
 			"Italian",
 		},
 	},
 	{
 		Country: "Sao Tome and Principe",
 		Iso2:    "ST",
-		Languages: []st{
+		Languages: []string{
 			"Portuguese",
 		},
 	},
 	{
 		Country: "Saudi Arabia",
 		Iso2:    "SA",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Senegal",
 		Iso2:    "SN",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Serbia",
 		Iso2:    "RS",
-		Languages: []st{
+		Languages: []string{
 			"Serbian",
 		},
 	},
 	{
 		Country: "Seychelles",
 		Iso2:    "SC",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"French",
 		},
@@ -1241,7 +1241,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Singapore",
 		Iso2:    "SG",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"Malay",
 			"Mandarin Chinese",
@@ -1251,21 +1251,21 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Slovakia",
 		Iso2:    "SK",
-		Languages: []st{
+		Languages: []string{
 			"Slovak",
 		},
 	},
 	{
 		Country: "Slovenia",
 		Iso2:    "SI",
-		Languages: []st{
+		Languages: []string{
 			"Slovene",
 		},
 	},
 	{
 		Country: "Somalia",
 		Iso2:    "SO",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 			"Somali",
 		},
@@ -1273,7 +1273,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "South Africa",
 		Iso2:    "ZA",
-		Languages: []st{
+		Languages: []string{
 			"Afrikaans",
 			"English",
 		},
@@ -1281,21 +1281,21 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "South Sudan",
 		Iso2:    "SS",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Spain",
 		Iso2:    "ES",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Sri Lanka",
 		Iso2:    "LK",
-		Languages: []st{
+		Languages: []string{
 			"Sinhala",
 			"Tamil",
 		},
@@ -1303,21 +1303,21 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Suriname",
 		Iso2:    "SR",
-		Languages: []st{
+		Languages: []string{
 			"Dutch",
 		},
 	},
 	{
 		Country: "Sweden",
 		Iso2:    "SE",
-		Languages: []st{
+		Languages: []string{
 			"Swedish",
 		},
 	},
 	{
 		Country: "Switzerland",
 		Iso2:    "CH",
-		Languages: []st{
+		Languages: []string{
 			"French",
 			"German",
 			"Italian",
@@ -1326,28 +1326,28 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Syria",
 		Iso2:    "SY",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Taiwan",
 		Iso2:    "TW",
-		Languages: []st{
+		Languages: []string{
 			"Mandarin Chinese",
 		},
 	},
 	{
 		Country: "Tajikistan",
 		Iso2:    "TJ",
-		Languages: []st{
+		Languages: []string{
 			"Tajik",
 		},
 	},
 	{
 		Country: "Tanzania",
 		Iso2:    "TZ",
-		Languages: []st{
+		Languages: []string{
 			"Swahili",
 			"English",
 		},
@@ -1355,70 +1355,70 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Thailand",
 		Iso2:    "TH",
-		Languages: []st{
+		Languages: []string{
 			"Thai",
 		},
 	},
 	{
 		Country: "Togo",
 		Iso2:    "TG",
-		Languages: []st{
+		Languages: []string{
 			"French",
 		},
 	},
 	{
 		Country: "Tokelau",
 		Iso2:    "TK",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Tonga",
 		Iso2:    "TO",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Trinidad and Tobago",
 		Iso2:    "TT",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Tunisia",
 		Iso2:    "TN",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Turkey",
 		Iso2:    "TR",
-		Languages: []st{
+		Languages: []string{
 			"Turkish",
 		},
 	},
 	{
 		Country: "Turkmenistan",
 		Iso2:    "TM",
-		Languages: []st{
+		Languages: []string{
 			"Turkmen",
 		},
 	},
 	{
 		Country: "Tuvalu",
 		Iso2:    "TV",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Uganda",
 		Iso2:    "UG",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"Swahili",
 		},
@@ -1426,7 +1426,7 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Ukraine",
 		Iso2:    "UA",
-		Languages: []st{
+		Languages: []string{
 			"Ukrainian",
 			"Russian",
 		},
@@ -1434,28 +1434,28 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "United Kingdom",
 		Iso2:    "UK",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "United States",
 		Iso2:    "US",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Uzbekistan",
 		Iso2:    "UZ",
-		Languages: []st{
+		Languages: []string{
 			"Uzbek",
 		},
 	},
 	{
 		Country: "Vanuatu",
 		Iso2:    "VU",
-		Languages: []st{
+		Languages: []string{
 			"English",
 			"French",
 		},
@@ -1463,35 +1463,35 @@ var LanguagesByNation = []*Language{
 	{
 		Country: "Venezuela",
 		Iso2:    "VE",
-		Languages: []st{
+		Languages: []string{
 			"Spanish",
 		},
 	},
 	{
 		Country: "Vietnam",
 		Iso2:    "VN",
-		Languages: []st{
+		Languages: []string{
 			"Vietnamese",
 		},
 	},
 	{
 		Country: "Yemen",
 		Iso2:    "YE",
-		Languages: []st{
+		Languages: []string{
 			"Arabic",
 		},
 	},
 	{
 		Country: "Zambia",
 		Iso2:    "ZM",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},
 	{
 		Country: "Zimbabwe",
 		Iso2:    "ZW",
-		Languages: []st{
+		Languages: []string{
 			"English",
 		},
 	},

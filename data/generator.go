@@ -2,9 +2,10 @@ package main
 
 import (
 	"compress/gzip"
-	"github.com/Hubmakerlabs/gilder-data/locale"
 	"os"
+
 	"github.com/Hubmakerlabs/gilder-data/game"
+	"github.com/Hubmakerlabs/gilder-data/locale"
 )
 
 const (
@@ -16,7 +17,7 @@ const (
 )
 
 func main() {
-	var err er
+	var err error
 	_, _, err = locale.GetTimezones(timezonesJson)
 	nations := locale.GetNations(localeJson)
 	var fh *os.File
@@ -26,7 +27,7 @@ func main() {
 	}
 	var w *gzip.Writer
 	w, err = gzip.NewWriterLevel(fh, gzip.BestCompression)
-	_, err = w.Write(by(nations))
+	_, err = w.Write([]byte(nations))
 	if err != nil {
 		panic(err)
 	}
@@ -42,7 +43,7 @@ func main() {
 		panic(err)
 	}
 	w, err = gzip.NewWriterLevel(fh, gzip.BestCompression)
-	_, err = w.Write(by(games))
+	_, err = w.Write([]byte(games))
 	if err != nil {
 		panic(err)
 	}

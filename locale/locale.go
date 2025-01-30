@@ -10,22 +10,22 @@ import (
 )
 
 type TimeZone struct {
-	Name      st    `json:"name"`
-	Offset    int   `json:"offset"`
-	DstName   st    `json:"dst_name,omitempty"`
-	DstOffset int   `json:"dst_offset,omitempty"`
-	DstStart  int64 `json:"dst_start,omitempty"`
-	DstEnd    int64 `json:"dst_end,omitempty"`
+	Name      string `json:"name"`
+	Offset    int    `json:"offset"`
+	DstName   string `json:"dst_name,omitempty"`
+	DstOffset int    `json:"dst_offset,omitempty"`
+	DstStart  int64  `json:"dst_start,omitempty"`
+	DstEnd    int64  `json:"dst_end,omitempty"`
 }
 
-type TimeZones map[st]TimeZone
+type TimeZones map[string]TimeZone
 
 type TimeZoneList []TimeZone
 
 func (t TimeZoneList) Len() int           { return len(t) }
 func (t TimeZoneList) Less(i, j int) bool { return t[i].Name < t[j].Name }
 func (t TimeZoneList) Swap(i, j int)      { t[i], t[j] = t[j], t[i] }
-func (t TimeZones) GetSortedNames() (s []st) {
+func (t TimeZones) GetSortedNames() (s []string) {
 	for i := range t {
 		s = append(s, i)
 	}
@@ -33,7 +33,7 @@ func (t TimeZones) GetSortedNames() (s []st) {
 	return
 }
 
-func (t TimeZoneList) Get(name st) (d *TimeZone) {
+func (t TimeZoneList) Get(name string) (d *TimeZone) {
 	for _, v := range t {
 		if v.Name == name {
 			return &v
@@ -42,7 +42,7 @@ func (t TimeZoneList) Get(name st) (d *TimeZone) {
 	return
 }
 
-func (t TimeZoneList) GetInForceOffset(name st) (off time.Duration, err er) {
+func (t TimeZoneList) GetInForceOffset(name string) (off time.Duration, err error) {
 	tz := t.Get(name)
 	if tz == nil {
 		err = errorf.E("unknown timezone %s", name)
@@ -59,20 +59,20 @@ func (t TimeZoneList) GetInForceOffset(name st) (off time.Duration, err er) {
 // Nation is the structure containing the needed information for a web app
 // handling information about user locations in Gilder.
 type Nation struct {
-	Id             no   `json:"id"`
-	Name           st   `json:"name"`
-	Iso3           st   `json:"iso3"`
-	Iso2           st   `json:"iso2"`
-	NumericCode    st   `json:"numeric_code"`
-	PhoneCode      st   `json:"phone_code"`
-	Capital        st   `json:"capital"`
-	Currency       st   `json:"currency"`
-	CurrencyName   st   `json:"currency_name"`
-	CurrencySymbol st   `json:"currency_symbol"`
-	Tld            st   `json:"tld"`
-	Native         st   `json:"native"`
-	Emoji          st   `json:"emoji"`
-	Languages      []st `json:"languages"`
+	Id             int      `json:"id"`
+	Name           string   `json:"name"`
+	Iso3           string   `json:"iso3"`
+	Iso2           string   `json:"iso2"`
+	NumericCode    string   `json:"numeric_code"`
+	PhoneCode      string   `json:"phone_code"`
+	Capital        string   `json:"capital"`
+	Currency       string   `json:"currency"`
+	CurrencyName   string   `json:"currency_name"`
+	CurrencySymbol string   `json:"currency_symbol"`
+	Tld            string   `json:"tld"`
+	Native         string   `json:"native"`
+	Emoji          string   `json:"emoji"`
+	Languages      []string `json:"languages"`
 	TimeZones      `json:"timezones"`
 }
 
@@ -81,7 +81,7 @@ type Nations []Nation
 func (n Nations) Len() int           { return len(n) }
 func (n Nations) Less(i, j int) bool { return n[i].Name < n[j].Name }
 func (n Nations) Swap(i, j int)      { n[i], n[j] = n[j], n[i] }
-func (n Nations) Get(name st) (d *Nation) {
+func (n Nations) Get(name string) (d *Nation) {
 	for _, v := range n {
 		if v.Name == name {
 			return &v
@@ -98,7 +98,7 @@ const (
 	TimezonesJsonFile  = "timezones.json"
 )
 
-func GetTimezones(jsonFile st) (o st, tzs TimeZones, err er) {
+func GetTimezones(jsonFile string) (o string, tzs TimeZones, err error) {
 	if jsonFile == "" {
 		jsonFile = TimezonesJsonFile
 	}
@@ -108,10 +108,10 @@ func GetTimezones(jsonFile st) (o st, tzs TimeZones, err er) {
 		modTime := fi.ModTime()
 		update := time.Now().Add(time.Hour * 24 * 90)
 		if !modTime.After(update) {
-			// no need to update more than once a season
-			var b by
+			// int need to update more than once a season
+			var b []byte
 			if b, err = os.ReadFile(TimezonesJsonFile); !chk.E(err) {
-				o = st(b)
+				o = string(b)
 				var tzl TimeZoneList
 				if err = json.Unmarshal(b, &tzl); chk.E(err) {
 					return
@@ -129,12 +129,12 @@ func GetTimezones(jsonFile st) (o st, tzs TimeZones, err er) {
 	if res, err = http.Get(availableTimeZones); chk.E(err) {
 		return
 	}
-	var b by
+	var b []byte
 	if b, err = io.ReadAll(res.Body); chk.E(err) {
 		return
 	}
 	tzs = make(TimeZones)
-	var zoneNames []st
+	var zoneNames []string
 	if err = json.Unmarshal(b, &zoneNames); chk.E(err) {
 		return
 	}
@@ -182,28 +182,28 @@ func GetTimezones(jsonFile st) (o st, tzs TimeZones, err er) {
 	return
 }
 
-func GetNations(jsonFile st) (o st) {
+func GetNations(jsonFile string) (o string) {
 	if jsonFile == "" {
 		jsonFile = CountriesJsonFile
 	}
 	log.I.F("creating nations json %s", jsonFile)
-	var err er
+	var err error
 	var fi os.FileInfo
 	if fi, err = os.Stat(jsonFile); err == nil {
 		modTime := fi.ModTime()
 		update := time.Now().Add(time.Hour * 24 * 90)
 		if !modTime.After(update) {
-			// no need to update more than once a season
-			var b by
+			// int need to update more than once a season
+			var b []byte
 			if b, err = os.ReadFile(CountriesJsonFile); !chk.E(err) {
-				o = st(b)
+				o = string(b)
 				return
 			}
 		}
 	}
 	var c Countries
 	var res *http.Response
-	var b by
+	var b []byte
 	// next, get the country data
 	if res, err = http.Get(countries); chk.E(err) {
 		return
@@ -244,7 +244,7 @@ func GetNations(jsonFile st) (o st) {
 			ccc.Languages = append(ccc.Languages, "English")
 		}
 		for _, tz := range country.Tzs {
-			var ok bo
+			var ok bool
 			if ccc.TimeZones[tz.ZoneName], ok = tzs[tz.ZoneName]; ok {
 				x := ccc.TimeZones[tz.ZoneName]
 				x.Name = tz.Abbreviation
@@ -260,5 +260,5 @@ func GetNations(jsonFile st) (o st) {
 	// cache the current version so we can avoid making it again any time too soon
 	chk.E(os.WriteFile(jsonFile, b, 0660))
 	log.I.F("finished creating nations json %s", jsonFile)
-	return st(b)
+	return string(b)
 }

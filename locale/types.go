@@ -7,79 +7,79 @@ import (
 // countries
 
 type Tz struct {
-	ZoneName      st `json:"zoneName"`
-	GmtOffset     no `json:"gmtOffset"`
-	GmtOffsetName st `json:"gmtOffsetName"`
-	Abbreviation  st `json:"abbreviation"`
-	TzName        st `json:"tzName"`
+	ZoneName      string `json:"zoneName"`
+	GmtOffset     int    `json:"gmtOffset"`
+	GmtOffsetName string `json:"gmtOffsetName"`
+	Abbreviation  string `json:"abbreviation"`
+	TzName        string `json:"tzName"`
 }
 
 type Tzs []Tz
 
 type Translations struct {
-	Ko   st `json:"ko"`
-	PtBR st `json:"pt-BR"`
-	Pt   st `json:"pt"`
-	Nl   st `json:"nl"`
-	Hr   st `json:"hr"`
-	Fa   st `json:"fa"`
-	De   st `json:"de"`
-	Es   st `json:"es"`
-	Fr   st `json:"fr"`
-	Ja   st `json:"ja"`
-	It   st `json:"it"`
-	ZhCN st `json:"zh-CN"`
-	Tr   st `json:"tr"`
-	Ru   st `json:"ru"`
-	Uk   st `json:"uk"`
-	Pl   st `json:"pl"`
+	Ko   string `json:"ko"`
+	PtBR string `json:"pt-BR"`
+	Pt   string `json:"pt"`
+	Nl   string `json:"nl"`
+	Hr   string `json:"hr"`
+	Fa   string `json:"fa"`
+	De   string `json:"de"`
+	Es   string `json:"es"`
+	Fr   string `json:"fr"`
+	Ja   string `json:"ja"`
+	It   string `json:"it"`
+	ZhCN string `json:"zh-CN"`
+	Tr   string `json:"tr"`
+	Ru   string `json:"ru"`
+	Uk   string `json:"uk"`
+	Pl   string `json:"pl"`
 }
 
 type City struct {
-	Id        no `json:"id"`
-	Name      st `json:"name"`
-	Latitude  st `json:"latitude"`
-	Longitude st `json:"longitude"`
+	Id        int    `json:"id"`
+	Name      string `json:"name"`
+	Latitude  string `json:"latitude"`
+	Longitude string `json:"longitude"`
 }
 
 type Cities []City
 
 type State struct {
-	Id        no `json:"id"`
-	Name      st `json:"name"`
-	StateCode st `json:"state_code"`
-	Latitude  st `json:"latitude"`
-	Longitude st `json:"longitude"`
-	Type      st `json:"type"`
+	Id        int    `json:"id"`
+	Name      string `json:"name"`
+	StateCode string `json:"state_code"`
+	Latitude  string `json:"latitude"`
+	Longitude string `json:"longitude"`
+	Type      string `json:"type"`
 	Cities    `json:"cities,omitempty"`
 }
 
 type States []State
 
 type Country struct {
-	Id             no `json:"id"`
-	Name           st `json:"name"`
-	Iso3           st `json:"iso3"`
-	Iso2           st `json:"iso2"`
-	NumericCode    st `json:"numeric_code"`
-	PhoneCode      st `json:"phonecode"`
-	Capital        st `json:"capital"`
-	Currency       st `json:"currency"`
-	CurrencyName   st `json:"currency_name"`
-	CurrencySymbol st `json:"currency_symbol"`
-	Tld            st `json:"tld"`
-	Native         st `json:"native"`
-	Region         st `json:"region"`
-	RegionId       no `json:"region_id"`
-	Subregion      st `json:"subregion"`
-	SubregionId    no `json:"subregion_id"`
-	Nationality    st `json:"nationality"`
+	Id             int    `json:"id"`
+	Name           string `json:"name"`
+	Iso3           string `json:"iso3"`
+	Iso2           string `json:"iso2"`
+	NumericCode    string `json:"numeric_code"`
+	PhoneCode      string `json:"phonecode"`
+	Capital        string `json:"capital"`
+	Currency       string `json:"currency"`
+	CurrencyName   string `json:"currency_name"`
+	CurrencySymbol string `json:"currency_symbol"`
+	Tld            string `json:"tld"`
+	Native         string `json:"native"`
+	Region         string `json:"region"`
+	RegionId       int    `json:"region_id"`
+	Subregion      string `json:"subregion"`
+	SubregionId    int    `json:"subregion_id"`
+	Nationality    string `json:"nationality"`
 	Tzs            `json:"timezones"`
 	Translations   `json:"translations"`
-	Latitude       st `json:"latitude"`
-	Longitude      st `json:"longitude"`
-	Emoji          st `json:"emoji"`
-	EmojiU         st `json:"emojiU"`
+	Latitude       string `json:"latitude"`
+	Longitude      string `json:"longitude"`
+	Emoji          string `json:"emoji"`
+	EmojiU         string `json:"emojiU"`
 	States         `json:"states"`
 }
 

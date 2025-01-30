@@ -2,16 +2,17 @@ package game
 
 import (
 	_ "embed"
-	"github.com/dimuska139/rawg-sdk-go/v3"
-	"net/http"
-	"realy.lol/context"
-	"time"
-	"strings"
 	"encoding/json"
+	"net/http"
 	"os"
+	"strings"
+	"time"
+
+	"github.com/dimuska139/rawg-sdk-go/v3"
+	"realy.lol/context"
 )
 
-var mp = []st{
+var mp = []string{
 	"2-players",
 	"4-player-local",
 	"asynchronous-multiplayer",
@@ -48,21 +49,21 @@ const (
 	GamesJsonFile = "games.json"
 )
 
-func GetMpGames(jsonFile st) (o st) {
+func GetMpGames(jsonFile string) (o string) {
 	if jsonFile == "" {
 		jsonFile = GamesJsonFile
 	}
 	log.I.F("creating mp games json %s", jsonFile)
-	var err er
+	var err error
 	var fi os.FileInfo
 	if fi, err = os.Stat(jsonFile); err == nil {
 		modTime := fi.ModTime()
 		update := time.Now().Add(time.Hour * 24 * 90)
 		if !modTime.After(update) {
-			// no need to update more than once a season
-			var b by
+			// int need to update more than once a season
+			var b []byte
 			if b, err = os.ReadFile(jsonFile); !chk.E(err) {
-				o = st(b)
+				o = string(b)
 				return
 			}
 		}
@@ -74,12 +75,12 @@ func GetMpGames(jsonFile st) (o st) {
 		Rps:      1,
 	}
 	client := rawg.NewClient(http.DefaultClient, &config)
-	var i, count no
+	var i, count int
 	var gameList []*FullGameDetail
 	o = "["
 	var first bool
 	var data []*rawg.Game
-	var total no
+	var total int
 done:
 	for {
 		log.I.Ln("query page", i)
@@ -108,9 +109,9 @@ done:
 					for _, t := range mp {
 						// we are only interested in the mp tagged games
 						if strings.Contains(tag.Slug, t) {
-							var b by
+							var b []byte
 							// we are only interested in computer games, not consoles
-							var relevantPlatform bo
+							var relevantPlatform bool
 						platforms:
 							for _, v := range gd.ParentPlatforms {
 								switch v.Platform.Name {
@@ -148,7 +149,7 @@ done:
 							} else {
 								o += ","
 							}
-							o += st(b)
+							o += string(b)
 							continue cont
 						}
 					}
@@ -158,7 +159,7 @@ done:
 	}
 	o += "]"
 	// cache the current version so we can avoid making it again any time too soon
-	chk.E(os.WriteFile(jsonFile, by(o), 0660))
+	chk.E(os.WriteFile(jsonFile, []byte(o), 0660))
 	log.I.F("finished creating mp games json %s", jsonFile)
 	return
 }
