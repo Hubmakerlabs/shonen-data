@@ -22,9 +22,12 @@ go.uber.org/atomic v1.11.0/go.mod h1:LUxbIzbOniOlMKjJjyPfpl4v+PKK2cNJn91OQbhoJI0
 golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.29.0 h1:TPYlXGxvx1MGTn2GiZDhnjPA9wZzZeGKHHmKhHYvgaU=
 golang.org/x/sys v0.29.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+golang.org/x/sys v0.31.0/go.mod h1:BJP2sWEmIv4KK5OTEluFJCKSidICx8ciO85XgH3Ak8k=
 golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=
 golang.org/x/time v0.9.0 h1:EsRrnYcQiGH+5FfbgvV4AP7qEZstoyrHB0DzarOQ4ZY=
 golang.org/x/time v0.9.0/go.mod h1:3BpzKBy/shNhVucY/MWOyx10tF3SFh9QdLuxbVysPQM=
+golang.org/x/time v0.11.0 h1:/bpjEDfN9tkoN/ryeYHnv5hcMlc8ncjMcM4XBk5NWV0=
+golang.org/x/time v0.11.0/go.mod h1:CDIdPxbZBQxdj6cxyCIdrNogrJKMJ7pr37NYpMcMDSg=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
@@ -33,3 +36,5 @@ protocol.realy.lol v0.0.0-20250130130308-5d58f6101169 h1:FPhXF1UhWSejh3M7x8Rmb8C
 protocol.realy.lol v0.0.0-20250130130308-5d58f6101169/go.mod h1:W/KChB1GEl2p1TfTphwS3gZinXAmPnCexa8WNIqyXhw=
 realy.lol v1.7.10 h1:YxpMwdDv8K1HK98LezM/ukGm1JSobA/aQUwxZHf7SL8=
 realy.lol v1.7.10/go.mod h1:qtk9aklmo7dpX+uSj20ol4utmh3ldWXQOpyzH4dcRG8=
+realy.lol v1.13.10 h1:YcxGgzJsSzFxhYN9y8Qq98KmeZb6zoz0ybd+KzK0dsg=
+realy.lol v1.13.10/go.mod h1:ekwq/ZFPrX+fESlIS8Z0HX+vrBFJmx+CC9BFDuMBCkA=
