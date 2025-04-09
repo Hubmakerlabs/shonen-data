@@ -1,7 +1,7 @@
-package gilder_data
+package shonen_data
 
 import (
-	"protocol.realy.lol/pkg/lol"
+	"realy.lol/lol"
 )
 
 var (

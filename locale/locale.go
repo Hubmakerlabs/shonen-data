@@ -57,7 +57,7 @@ func (t TimeZoneList) GetInForceOffset(name string) (off time.Duration, err erro
 }
 
 // Nation is the structure containing the needed information for a web app
-// handling information about user locations in Gilder.
+// handling information about user locations in Shonen Network.
 type Nation struct {
 	Id             int      `json:"id"`
 	Name           string   `json:"name"`

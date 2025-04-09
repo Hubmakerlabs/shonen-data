@@ -1,4 +1,4 @@
-module github.com/Hubmakerlabs/gilder-data
+module github.com/Hubmakerlabs/shonen-data
 
 go 1.23.4
 

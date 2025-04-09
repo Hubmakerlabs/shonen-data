@@ -85,7 +85,10 @@ done:
 	for {
 		log.I.Ln("query page", i)
 		i++
-		filter := rawg.NewGamesFilter().SetPageSize(100).SetPage(i)
+		if i > 150 {
+			break
+		}
+		filter := rawg.NewGamesFilter().SetPageSize(100).SetPage(i).SetOrdering("name").SetTags(mp)
 		ctx, cancel := context.Timeout(context.Bg(), time.Second*20)
 		if data, total, err = client.GetGames(ctx, filter); chk.E(err) {
 			cancel()
@@ -100,10 +103,10 @@ done:
 				// log.I.F("%s too old %v", game.Name, game.Released)
 				continue cont
 			}
-			// we won't note games that nobody is playing
-			if gd.AddedByStatus.Playing < 10 {
-				continue cont
-			}
+			// // we won't note games that nobody is playing
+			// if gd.AddedByStatus.Playing < 10 {
+			// 	continue cont
+			// }
 			for _, tag := range gd.Tags {
 				if tag.Language == "eng" {
 					for _, t := range mp {
@@ -131,7 +134,7 @@ done:
 								BackgroundImage: gd.ImageBackground,
 								Metacritic:      gd.Metacritic,
 								Released:        gd.Released.Format("2006-01-02"),
-								Players:         gd.AddedByStatus.Playing,
+								// Players:         gd.AddedByStatus.Playing,
 							}
 							for _, p := range gd.ParentPlatforms {
 								// switch p.Platform.Name {
