@@ -1,10 +1,9 @@
-module github.com/Hubmakerlabs/gilder-data
+module github.com/Hubmakerlabs/shonen-data
 
 go 1.24.2
 
 require (
 	github.com/dimuska139/rawg-sdk-go/v3 v3.0.0
-	realy.lol v1.7.10
 	realy.mleku.dev v1.14.3
 )
 
