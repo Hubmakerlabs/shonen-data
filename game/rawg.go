@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/dimuska139/rawg-sdk-go/v3"
-	"realy.lol/context"
+	"realy.mleku.dev/context"
 )
 
 var mp = []string{
