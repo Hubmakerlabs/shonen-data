@@ -1,7 +1,7 @@
 package gilder_data
 
 import (
-	"protocol.realy.lol/pkg/lol"
+	"realy.mleku.dev/lol"
 )
 
 var (
