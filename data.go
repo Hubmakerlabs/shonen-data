@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"sort"
 
-	"github.com/Hubmakerlabs/gilder-data/game"
-	"github.com/Hubmakerlabs/gilder-data/locale"
+	"github.com/Hubmakerlabs/shonen-data/game"
+	"github.com/Hubmakerlabs/shonen-data/locale"
 )
 
 //go:embed data/countriestimezoneslanguages.json

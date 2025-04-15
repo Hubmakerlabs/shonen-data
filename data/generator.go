@@ -4,8 +4,8 @@ import (
 	"compress/gzip"
 	"os"
 
-	"github.com/Hubmakerlabs/gilder-data/game"
-	"github.com/Hubmakerlabs/gilder-data/locale"
+	"github.com/Hubmakerlabs/shonen-data/game"
+	"github.com/Hubmakerlabs/shonen-data/locale"
 )
 
 const (
