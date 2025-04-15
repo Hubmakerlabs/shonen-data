@@ -1,7 +1,7 @@
 package locale
 
 import (
-	"protocol.realy.lol/pkg/lol"
+	"realy.mleku.dev/lol"
 )
 
 var (
